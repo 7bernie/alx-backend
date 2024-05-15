@@ -64,18 +64,13 @@ def get_locale():
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-@app.route('/', strict_slashes=False)
+@app.route('/', strict_slashes=True)
 def index() -> str:
     """
     Handles / route
     """
-    login_as = request.args.get('login_as', type=int)
-    locale = request.args.get('locale', type=str)
-    
-    # Use the login_as and locale variables in your logic as needed
-    
     return render_template('5-index.html')
 
 
 if __name__ == "__main__":
-    app.run(port=5000, host="0.0.0.0", debug=True)
+    app.run(port="5000", host="0.0.0.0", debug=True)
